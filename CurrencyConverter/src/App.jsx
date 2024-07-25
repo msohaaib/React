@@ -22,8 +22,6 @@ function App() {
   const convert = () => {
     if (currencyInfo[to]) {
       setConvertedAmount(amount * currencyInfo[to]);
-    } else {
-      console.error(`Currency ${to} is not available.`);
     }
   };
 
