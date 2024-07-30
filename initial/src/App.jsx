@@ -1,16 +1,16 @@
-import List from "./Components/List"
+import React from 'react';
+import { motion } from 'framer-motion';
 
 function App() {
-  // const animals = ["Elephant", "Lion", "Cow", "Snake", "Lizard"]
-  // const animals = ["Lion", "Cow", "Snake", "Lizard"];
-  // const animalsList = animals.map((animal) => <li key={animal}>{animal}</li>)
-  const animals = [];
   return (
-    <>
-<h1>Animals: </h1>
-<List  />
-    </>
-  )
+    <div className='flex justify-center items-center h-screen'>
+      <motion.div 
+        style={{ width: 100, height: 100, backgroundColor: 'blue' }}
+        drag
+        dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
