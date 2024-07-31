@@ -1,41 +1,40 @@
-import { useState, useEffect } from "react"
-import {useDispatch} from "react-redux"
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import './App.css'
 import authService from "./appwrite/auth"
-import {logIn, logOut} from "./Store/AuthSlice"
-import { Footer, Header } from "./Components"
-
-
+import login from "./Store/AuthSlice"
+import logOut from "./Store/AuthSlice"
+import  Header  from './Components/header/Header'
+import  Footer  from './Components/footer/Footer'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
-  useEffect( () => {
+  useEffect(() => {
     authService.getCurrentUser()
-    .then((userData)=>{
+    .then((userData) => {
       if (userData) {
-        dispatch(logIn({userData}))
-      }
-      else{
+        dispatch(login({userData}))
+      } else {
         dispatch(logOut())
       }
     })
-    .finally( () => setLoading(false))
+    .finally(() => setLoading(false))
   }, [])
-
+  
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
-      <div className="w-full block">
+    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+      <div className='w-full block'>
         <Header />
-        {/* <main>
-          <Outlet />
-        </main> */}
+        <main>
+        TODO:  <Outlet />
+        </main>
         <Footer />
       </div>
     </div>
-  ) : (
-    null
-  )
+  ) : null
 }
 
 export default App

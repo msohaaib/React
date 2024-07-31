@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Footer() {
+function Logo() {
   return (
     <div>
-      
+      Logo
     </div>
   )
 }
 
-export default Footer
+export default Logo
