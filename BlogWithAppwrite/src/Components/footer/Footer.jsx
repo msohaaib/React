@@ -26,12 +26,12 @@ function Footer() {
                             </h3>
                             <ul>
                                 <li className="mb-4">
-                                    <a
+                                    {/* <Link
                                         className=" text-base font-medium text-gray-900 hover:text-gray-700"
                                         to="/"
                                     >
                                         Features
-                                    </a>
+                                    </Link> */}
                                 </li>
                                 <li className="mb-4">
                                     {/* <Link
