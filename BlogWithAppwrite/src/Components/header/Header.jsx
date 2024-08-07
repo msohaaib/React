@@ -1,12 +1,13 @@
-import React from 'react'
-import { Container, Logo, LogOutBtn } from '../index'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Container, Logo, LogOutbtn } from '../index';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
-  const authStatus = useSelector((state)=>state.auth.status)
-  const navigate = useNavigate()
+  const authStatus = useSelector((state) => state.auth.status);
+  const navigate = useNavigate();
+  
   const navItem = [
     {
       name: 'Home', 
@@ -15,55 +16,57 @@ function Header() {
     },
     {
       name: 'LogIn', 
-      path: '/logIn',
+      path: '/Login',
       active: !authStatus 
     },
     {
       name: 'SignUp', 
-      path: '/signUp',
+      path: '/SignUp',
       active : !authStatus
     },
     {
       name: 'All Posts', 
-      path: '/all-posts',
+      path: '/AllPosts',
       active : authStatus
     },
     {
       name: 'Add Post', 
-      path: '/add-post',
+      path: '/AddPost',
       active : authStatus
     }
-  ]
+  ];
 
   return (
     <header>
       <Container>
-        <nav>
+        <nav className='flex justify-between pt-8'>
           <div>
             <Link to='/' >
-              <Logo width='70px`' />
+              <Logo width='70px' /> {/* Fixed the extra backtick here */}
             </Link>
           </div>
-          <ul>
-            {navItem.map( (item) => (
+          <ul className='flex flex-wrap gap-8 '>
+            {navItem.map((item) => (
               item.active ? (
-                <li key={item.name}>
+                <li key={item.name} className='hover:bg-white rounded-full py-2 px-4 transition-all'>
                   <button
-                  onClick={()=>{navigate(item.slug)}}
-                  >{item.name}</button>
+                    onClick={() => { navigate(item.path) }}
+                  >
+                    {item.name}
+                  </button>
                 </li>
               ) : null
-            ) )}
+            ))}
             {authStatus && (
               <li>
-                <LogOutBtn />
+                <LogOutbtn />
               </li>
             )}
           </ul>
         </nav>
       </Container>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

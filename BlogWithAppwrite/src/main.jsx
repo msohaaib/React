@@ -10,12 +10,12 @@ import { AuthLayout, Login } from './Components/index.js'
 
 
 import AddPost from "./pages/AddPost";
-import Signup from './pages/Signup'
+import SignUp from './pages/SignUp.jsx'
 import EditPost from "./pages/EditPost";
 
 import Post from "./pages/Post";
 
-import AllPosts from "./pages/AllPosts";
+import AllPosts from "./pages/AllPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             element: <Home />,
         },
         {
-            path: "/login",
+            path: "/Login",
             element: (
                 <AuthLayout authentication={false}>
                     <Login />
@@ -35,10 +35,10 @@ const router = createBrowserRouter([
             ),
         },
         {
-            path: "/signup",
+            path: "/SignUp",
             element: (
                 <AuthLayout authentication={false}>
-                    <Signup />
+                    <SignUp />
                 </AuthLayout>
             ),
         },
