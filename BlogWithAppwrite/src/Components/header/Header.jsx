@@ -35,6 +35,7 @@ function Header() {
       active : authStatus
     }
   ];
+  
 
   return (
     <header>
